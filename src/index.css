@@ -254,6 +254,24 @@
     align-items: center;
     gap: 0.5rem;
     font-style: italic;
+    font-weight: 700;
+  }
+  .section-title-jdm::before {
+    content: '夜中';
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    opacity: 0.10;
+    font-size: 2.5em;
+    color: hsl(330 100% 49%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    white-space: nowrap;
+    line-height: 1;
   }
   .section-title-jdm .kanji-overlay {
     font-family: 'Noto Sans JP', sans-serif;
