@@ -18,7 +18,7 @@ const ParallaxBackground = () => {
       lastTime = now;
       animOffset.current += dt * 5;
       if (layerRef.current) {
-        layerRef.current.style.transform = `rotate(15deg) translate(${animOffset.current % 500}px, ${scrollOffset.current * 0.3}px)`;
+        layerRef.current.style.transform = `rotate(-20deg) translate(${animOffset.current % 600}px, ${scrollOffset.current * 0.3}px)`;
       }
       rafRef.current = requestAnimationFrame(animate);
     };
@@ -30,10 +30,10 @@ const ParallaxBackground = () => {
     };
   }, []);
 
-  const text = 'MIDNIGHT CLUB 夜中       ';
-  const line = text.repeat(8);
-  const lines = Array.from({ length: 30 }, (_, i) => (
-    <div key={i} className="whitespace-nowrap select-none" style={{ lineHeight: '5em', letterSpacing: '0.6em' }}>
+  const text = 'MIDNIGHT CLUB 夜中            ';
+  const line = text.repeat(5);
+  const lines = Array.from({ length: 15 }, (_, i) => (
+    <div key={i} className="whitespace-nowrap select-none" style={{ lineHeight: '8em', letterSpacing: '0.8em' }}>
       {line}
     </div>
   ));
@@ -42,15 +42,15 @@ const ParallaxBackground = () => {
     <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
       <div
         ref={layerRef}
-        className="absolute font-orbitron font-bold text-[10px] uppercase"
+        className="absolute font-orbitron font-bold text-sm uppercase"
         style={{
           color: '#111111',
           textShadow: '0 0 10px hsl(330 100% 49% / 0.04)',
-          transform: 'rotate(15deg)',
-          top: '-50%',
-          left: '-40%',
-          width: '220%',
-          height: '250%',
+          transform: 'rotate(-20deg)',
+          top: '-60%',
+          left: '-50%',
+          width: '250%',
+          height: '300%',
         }}
       >
         {lines}
