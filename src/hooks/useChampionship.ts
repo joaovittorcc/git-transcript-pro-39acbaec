@@ -386,6 +386,9 @@ export function useChampionship() {
           return { ...l, players };
         });
 
+        // Sync MD3 completion to Supabase (triggers Discord notification)
+        syncChallengeScoreUpdate(challengeId, newScore, 'completed');
+
         return {
           ...prev,
           lists: newLists,
@@ -394,6 +397,9 @@ export function useChampionship() {
           ),
         };
       }
+
+      // Sync score update (no status change yet)
+      syncChallengeScoreUpdate(challengeId, newScore);
 
       return { ...prev, challenges: newChallenges };
     });
