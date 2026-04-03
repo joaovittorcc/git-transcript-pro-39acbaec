@@ -183,6 +183,9 @@ export function useChampionship() {
         c.id === challengeId ? { ...c, status: 'racing' as const } : c
       ),
     }));
+
+    // Sync to Supabase (triggers Discord notification for 'racing')
+    syncChallengeStatusUpdate(challengeId, 'racing');
   }, []);
 
   const rejectInitiationChallenge = useCallback((challengeId: string) => {
