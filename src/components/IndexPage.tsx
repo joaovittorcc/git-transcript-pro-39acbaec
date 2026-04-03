@@ -308,7 +308,7 @@ const Index = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-1.5 px-3 sm:px-4 py-2.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] font-['Orbitron'] border-b-2 transition-all whitespace-nowrap
+                className={`flex items-center gap-1.5 px-3 sm:px-4 py-2.5 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] font-['Orbitron'] border-b-2 transition-all whitespace-nowrap hover-glitch
                   ${activeTab === tab.id
                     ? 'border-primary text-primary neon-text-purple'
                     : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
@@ -560,7 +560,7 @@ const Index = () => {
 
         {/* AMISTOSOS */}
         {activeTab === 'amistosos' && (
-          <div className="animate-fade-in-up animate-fill-both max-w-lg mx-auto">
+          <div className="animate-tab-slide-in max-w-lg mx-auto">
             <FriendlyPanel
               allPlayerNames={allPlayerNames}
               isAdmin={isAdmin}
@@ -578,7 +578,7 @@ const Index = () => {
 
         {/* PILOTOS */}
         {activeTab === 'pilotos' && (
-          <div className="animate-fade-in-up animate-fill-both">
+          <div className="animate-tab-slide-in">
             <PilotsTab
               getPlayerElo={getPlayerElo}
               list01Names={list01?.players.map(p => p.name) ?? []}
@@ -589,7 +589,7 @@ const Index = () => {
 
         {/* CAMPEONATO */}
         {activeTab === 'campeonato' && (
-          <div className="animate-fade-in">
+          <div className="animate-tab-slide-in">
             <ChampionshipTab
               isAdmin={isAdmin}
               loggedNick={loggedNick}
@@ -602,14 +602,14 @@ const Index = () => {
 
         {/* RANKING */}
         {activeTab === 'ranking' && (
-          <div className="animate-fade-in-up animate-fill-both max-w-3xl mx-auto">
+          <div className="animate-tab-slide-in max-w-3xl mx-auto">
             <EloRankingTable rankings={eloRankings} matches={friendlyMatches} />
           </div>
         )}
 
         {/* HISTÓRICO */}
         {activeTab === 'historico' && (
-          <div className="animate-fade-in-up animate-fill-both">
+          <div className="animate-tab-slide-in">
             <HistoryTab />
           </div>
         )}
