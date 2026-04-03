@@ -48,7 +48,7 @@ const EloRankingTable = ({ rankings, matches }: EloRankingTableProps) => {
             <span className="text-[10px] text-muted-foreground">{rankings[1].wins}V / {rankings[1].losses}D</span>
           </div>
           {/* 1st place */}
-          <div className={`relative flex flex-col items-center gap-2 p-5  border ${medalColors[0].bg} ${medalColors[0].border} ${medalColors[0].shadow} w-36 -mb-2 hover-lift animate-fade-in-up animate-fill-both animate-glow-breathe`}>
+          <div className={`relative flex flex-col items-center gap-2 p-5  border ${medalColors[0].bg} ${medalColors[0].border} w-36 -mb-2 hover-lift animate-fade-in-up animate-fill-both animate-podium-glow`}>
             <span className="absolute -top-3 left-1/2 -translate-x-1/2 kanji-accent text-xs text-yellow-400/60 tracking-widest">夜中</span>
             <span className="text-3xl animate-float">{medalColors[0].label}</span>
             <span className="text-sm font-bold tracking-wide neon-text-gold">
