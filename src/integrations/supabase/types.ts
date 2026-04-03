@@ -16,7 +16,6 @@ export type Database = {
     Tables: {
       championship_race_results: {
         Row: {
-          created_at: string
           finish_position: number
           id: string
           points: number
@@ -25,7 +24,6 @@ export type Database = {
           season_id: string
         }
         Insert: {
-          created_at?: string
           finish_position: number
           id?: string
           points?: number
@@ -34,7 +32,6 @@ export type Database = {
           season_id: string
         }
         Update: {
-          created_at?: string
           finish_position?: number
           id?: string
           points?: number
@@ -61,21 +58,18 @@ export type Database = {
       }
       championship_race_tracks: {
         Row: {
-          created_at: string
           id: string
           race_number: number
           season_id: string
           track_name: string
         }
         Insert: {
-          created_at?: string
           id?: string
           race_number: number
           season_id: string
           track_name: string
         }
         Update: {
-          created_at?: string
           id?: string
           race_number?: number
           season_id?: string
@@ -130,7 +124,6 @@ export type Database = {
           is_active: boolean
           name: string
           phase: string
-          updated_at: string
         }
         Insert: {
           created_at?: string
@@ -138,7 +131,6 @@ export type Database = {
           is_active?: boolean
           name: string
           phase?: string
-          updated_at?: string
         }
         Update: {
           created_at?: string
@@ -146,7 +138,6 @@ export type Database = {
           is_active?: boolean
           name?: string
           phase?: string
-          updated_at?: string
         }
         Relationships: []
       }
