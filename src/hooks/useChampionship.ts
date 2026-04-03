@@ -343,7 +343,14 @@ export function useChampionship() {
         );
 
         // Sync initiation completion to Supabase
-        syncChallengeScoreUpdate(challengeId, initScore, 'completed');
+        syncChallengeScoreUpdate(challengeId, initScore, 'completed', {
+          challenger_name: challenge.challengerName,
+          challenged_name: challenge.challengedName,
+          challenger_pos: challenge.challengerPos,
+          challenged_pos: challenge.challengedPos,
+          list_id: challenge.listId,
+          type: challenge.type,
+        });
 
         return { ...prev, challenges: newChallenges, jokerProgress: newJokerProgress };
       }
