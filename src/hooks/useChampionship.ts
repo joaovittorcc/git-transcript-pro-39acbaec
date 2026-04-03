@@ -396,8 +396,15 @@ export function useChampionship() {
           return { ...l, players };
         });
 
-        // Sync MD3 completion to Supabase (triggers Discord notification)
-        syncChallengeScoreUpdate(challengeId, newScore, 'completed');
+        // Sync MD3 completion to Supabase + Discord notification
+        syncChallengeScoreUpdate(challengeId, newScore, 'completed', {
+          challenger_name: challenge.challengerName,
+          challenged_name: challenge.challengedName,
+          challenger_pos: challenge.challengerPos,
+          challenged_pos: challenge.challengedPos,
+          list_id: challenge.listId,
+          type: challenge.type,
+        });
 
         return {
           ...prev,
