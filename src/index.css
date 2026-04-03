@@ -53,6 +53,7 @@
 
 @layer utilities {
   /* Scanlines overlay */
+  /* Scanlines overlay – 5% opacity monitor lines */
   .scanlines::after {
     content: '';
     position: fixed;
@@ -64,11 +65,36 @@
       0deg,
       transparent,
       transparent 2px,
-      rgba(255, 255, 255, 0.015) 2px,
-      rgba(255, 255, 255, 0.015) 4px
+      rgba(255, 255, 255, 0.05) 2px,
+      rgba(255, 255, 255, 0.05) 4px
     );
     pointer-events: none;
-    z-index: 9999;
+    z-index: 9998;
+  }
+
+  /* Film grain / noise overlay – 3% opacity */
+  .grain-overlay::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9997;
+  }
+
+  /* Central spotlight radial gradient */
+  .spotlight-bg {
+    background: radial-gradient(ellipse 70% 60% at 50% 40%, hsl(330 100% 49% / 0.06) 0%, hsl(0 0% 0% / 0.3) 40%, hsl(0 0% 0%) 100%) !important;
+  }
+
+  /* Neon top reflection on cards */
+  .neon-top-reflect {
+    border-top: 1px solid transparent;
+    border-image: linear-gradient(90deg, transparent, hsl(330 100% 49% / 0.6), transparent) 1;
   }
 
   .kanji-watermark {
