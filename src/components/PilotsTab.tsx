@@ -101,7 +101,7 @@ const PilotsTab = ({ getPlayerElo, list01Names, list02Names }: PilotsTabProps) =
         {pilots.map((pilot, i) => (
           <div
             key={pilot.username}
-            className="card-racing rounded-xl neon-border p-4 flex items-center gap-4 hover:bg-secondary/40 transition-all duration-200 group"
+            className="card-racing  neon-border p-4 flex items-center gap-4 hover:bg-secondary/40 transition-all duration-200 group"
           >
             {/* Avatar */}
             <div className={`flex h-12 w-12 items-center justify-center rounded-full text-sm font-bold font-['Orbitron'] shrink-0 border transition-all ${

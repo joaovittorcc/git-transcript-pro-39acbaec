@@ -148,7 +148,7 @@ const ChampionshipTab = ({ isAdmin, loggedNick, pilotRole, isInList01, isInList0
         <>
           {/* Registration section - only visible during inscricoes */}
           {phase === 'inscricoes' && loggedNick && (
-            <div className="card-racing rounded-xl neon-border p-5 space-y-3">
+            <div className="card-racing  neon-border p-5 space-y-3">
               <div className="flex items-center gap-2">
                 <UserPlus className="h-4 w-4 text-accent" />
                 <h3 className="text-xs font-bold uppercase tracking-[0.2em] neon-text-pink font-['Orbitron']">
@@ -191,14 +191,14 @@ const ChampionshipTab = ({ isAdmin, loggedNick, pilotRole, isInList01, isInList0
 
           {/* Phase: inscricoes closed notice */}
           {phase !== 'inscricoes' && !isFinalized && (
-            <div className="card-racing rounded-xl neon-border p-4 flex items-center gap-3">
+            <div className="card-racing  neon-border p-4 flex items-center gap-3">
               <Lock className="h-4 w-4 text-muted-foreground" />
               <p className="text-xs text-muted-foreground">Inscrições encerradas. Campeonato em andamento.</p>
             </div>
           )}
 
           {/* Trajetos da Etapa */}
-          <div className="card-racing rounded-xl neon-border overflow-hidden">
+          <div className="card-racing  neon-border overflow-hidden">
             <div className="bg-secondary/80 px-5 py-4 border-b border-border flex items-center gap-2">
               <MapPin className="h-4 w-4 text-primary" />
               <h3 className="text-xs font-bold tracking-[0.2em] uppercase neon-text-purple font-['Orbitron']">
@@ -230,7 +230,7 @@ const ChampionshipTab = ({ isAdmin, loggedNick, pilotRole, isInList01, isInList0
 
           {/* Tie alert */}
           {tieAlert && (
-            <div className="bg-yellow-500/10 border-2 border-yellow-500/50 rounded-xl p-5 flex items-center gap-3 animate-pulse">
+            <div className="bg-yellow-500/10 border-2 border-yellow-500/50  p-5 flex items-center gap-3 animate-pulse">
               <AlertTriangle className="h-8 w-8 text-yellow-400 shrink-0" />
               <div>
                 <p className="text-base font-black text-yellow-400 font-['Orbitron'] uppercase tracking-wider">
@@ -245,7 +245,7 @@ const ChampionshipTab = ({ isAdmin, loggedNick, pilotRole, isInList01, isInList0
 
           {/* Finalized: Winners highlight */}
           {isFinalized && leaderboard.length >= 2 && (
-            <div className="card-racing rounded-xl border-2 border-green-500/30 p-5 space-y-3">
+            <div className="card-racing  border-2 border-green-500/30 p-5 space-y-3">
               <div className="flex items-center gap-2">
                 <Crown className="h-5 w-5 text-yellow-400" />
                 <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-green-400 font-['Orbitron']">
@@ -270,7 +270,7 @@ const ChampionshipTab = ({ isAdmin, loggedNick, pilotRole, isInList01, isInList0
           )}
 
           {/* Leaderboard */}
-          <div className="card-racing rounded-xl neon-border overflow-hidden">
+          <div className="card-racing  neon-border overflow-hidden">
             <div className="bg-secondary/80 px-5 py-4 border-b border-border flex items-center gap-2">
               <Trophy className="h-4 w-4 text-accent" />
               <h3 className="text-xs font-bold tracking-[0.2em] uppercase neon-text-pink font-['Orbitron']">
@@ -350,7 +350,7 @@ const ChampionshipTab = ({ isAdmin, loggedNick, pilotRole, isInList01, isInList0
 
           {/* Admin Panel */}
           {isAdmin && (
-            <div className="card-racing rounded-xl neon-border overflow-hidden">
+            <div className="card-racing  neon-border overflow-hidden">
               <button
                 onClick={() => setShowAdmin(!showAdmin)}
                 className="w-full bg-secondary/80 px-5 py-4 border-b border-border flex items-center gap-2 hover:bg-secondary transition-colors"
