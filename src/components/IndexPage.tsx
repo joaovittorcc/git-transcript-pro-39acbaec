@@ -244,7 +244,7 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground scanlines relative">
       <ParallaxBackground />
       {/* Sticky Header */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80" style={{ position: 'relative', zIndex: 10 }}>
         <div className="neon-line" />
         <div className="max-w-6xl mx-auto px-4">
           {/* Top row: logo + login */}
