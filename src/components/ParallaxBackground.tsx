@@ -38,7 +38,7 @@ const ParallaxBackground = () => {
     };
 
     const texts = ['MIDNIGHT CLUB', '夜中', 'MDN', 'CLUB 夜中'];
-    return Array.from({ length: 35 }, (_, i) => ({
+    return Array.from({ length: 80 }, (_, i) => ({
       text: texts[Math.floor(rng(i * 3) * texts.length)],
       x: rng(i * 7 + 1) * 110 - 5,
       y: rng(i * 7 + 2) * 110 - 5,
