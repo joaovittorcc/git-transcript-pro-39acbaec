@@ -171,6 +171,9 @@ export function useChampionship() {
       ...prev,
       challenges: [...prev.challenges, challenge],
     }));
+
+    // Sync to Supabase (pending status - no Discord notification)
+    syncChallengeInsert(challenge);
   }, [state.lists]);
 
   const approveInitiationChallenge = useCallback((challengeId: string) => {
