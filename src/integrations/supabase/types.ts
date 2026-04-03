@@ -14,6 +14,57 @@ export type Database = {
   }
   public: {
     Tables: {
+      challenges: {
+        Row: {
+          challenged_id: string
+          challenged_name: string
+          challenged_pos: number
+          challenger_id: string
+          challenger_name: string
+          challenger_pos: number
+          created_at: string
+          discord_notified_status: string | null
+          id: string
+          list_id: string
+          score: number[] | null
+          status: string
+          tracks: string[] | null
+          type: string
+        }
+        Insert: {
+          challenged_id: string
+          challenged_name: string
+          challenged_pos?: number
+          challenger_id: string
+          challenger_name: string
+          challenger_pos?: number
+          created_at?: string
+          discord_notified_status?: string | null
+          id?: string
+          list_id: string
+          score?: number[] | null
+          status?: string
+          tracks?: string[] | null
+          type?: string
+        }
+        Update: {
+          challenged_id?: string
+          challenged_name?: string
+          challenged_pos?: number
+          challenger_id?: string
+          challenger_name?: string
+          challenger_pos?: number
+          created_at?: string
+          discord_notified_status?: string | null
+          id?: string
+          list_id?: string
+          score?: number[] | null
+          status?: string
+          tracks?: string[] | null
+          type?: string
+        }
+        Relationships: []
+      }
       championship_race_results: {
         Row: {
           finish_position: number
