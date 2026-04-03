@@ -14,7 +14,166 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      championship_race_results: {
+        Row: {
+          finish_position: number
+          id: string
+          points: number
+          race_number: number
+          registration_id: string
+          season_id: string
+        }
+        Insert: {
+          finish_position: number
+          id?: string
+          points?: number
+          race_number: number
+          registration_id: string
+          season_id: string
+        }
+        Update: {
+          finish_position?: number
+          id?: string
+          points?: number
+          race_number?: number
+          registration_id?: string
+          season_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "championship_race_results_registration_id_fkey"
+            columns: ["registration_id"]
+            isOneToOne: false
+            referencedRelation: "championship_registrations"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "championship_race_results_season_id_fkey"
+            columns: ["season_id"]
+            isOneToOne: false
+            referencedRelation: "championship_seasons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      championship_race_tracks: {
+        Row: {
+          id: string
+          race_number: number
+          season_id: string
+          track_name: string
+        }
+        Insert: {
+          id?: string
+          race_number: number
+          season_id: string
+          track_name: string
+        }
+        Update: {
+          id?: string
+          race_number?: number
+          season_id?: string
+          track_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "championship_race_tracks_season_id_fkey"
+            columns: ["season_id"]
+            isOneToOne: false
+            referencedRelation: "championship_seasons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      championship_registrations: {
+        Row: {
+          car: string
+          created_at: string
+          id: string
+          pilot_name: string
+          season_id: string
+        }
+        Insert: {
+          car: string
+          created_at?: string
+          id?: string
+          pilot_name: string
+          season_id: string
+        }
+        Update: {
+          car?: string
+          created_at?: string
+          id?: string
+          pilot_name?: string
+          season_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "championship_registrations_season_id_fkey"
+            columns: ["season_id"]
+            isOneToOne: false
+            referencedRelation: "championship_seasons"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      championship_seasons: {
+        Row: {
+          created_at: string
+          id: string
+          is_active: boolean
+          name: string
+          phase: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          name: string
+          phase?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_active?: boolean
+          name?: string
+          phase?: string
+        }
+        Relationships: []
+      }
+      global_logs: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          id: string
+          player_one: string | null
+          player_two: string | null
+          type: string
+          winner: string | null
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          description: string
+          id?: string
+          player_one?: string | null
+          player_two?: string | null
+          type: string
+          winner?: string | null
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          id?: string
+          player_one?: string | null
+          player_two?: string | null
+          type?: string
+          winner?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
