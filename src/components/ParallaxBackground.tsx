@@ -30,7 +30,6 @@ const ParallaxBackground = () => {
     };
   }, []);
 
-  // Seeded pseudo-random for consistent positions
   const items = useMemo(() => {
     const seed = 42;
     const rng = (i: number) => {
@@ -38,12 +37,12 @@ const ParallaxBackground = () => {
       return x - Math.floor(x);
     };
 
-    const texts = ['MIDNIGHT CLUB', '夜中', 'MIDNIGHT', 'CLUB 夜中', 'MDN', '夜中 CLUB'];
-    return Array.from({ length: 55 }, (_, i) => ({
+    const texts = ['MIDNIGHT CLUB', '夜中', 'MDN', 'CLUB 夜中'];
+    return Array.from({ length: 35 }, (_, i) => ({
       text: texts[Math.floor(rng(i * 3) * texts.length)],
-      x: rng(i * 7 + 1) * 120 - 10,
-      y: rng(i * 7 + 2) * 120 - 10,
-      size: 10 + rng(i * 7 + 3) * 8,
+      x: rng(i * 7 + 1) * 110 - 5,
+      y: rng(i * 7 + 2) * 110 - 5,
+      size: 11 + rng(i * 7 + 3) * 5,
     }));
   }, []);
 
@@ -67,10 +66,10 @@ const ParallaxBackground = () => {
               left: `${item.x}%`,
               top: `${item.y}%`,
               fontSize: `${item.size}px`,
-              color: '#111111',
-              textShadow: '0 0 12px hsl(330 100% 49% / 0.04)',
+              color: '#0e0e0e',
+              textShadow: '0 0 10px hsl(330 100% 49% / 0.03)',
               transform: 'rotate(-20deg)',
-              letterSpacing: '0.5em',
+              letterSpacing: '0.4em',
             }}
           >
             {item.text}
