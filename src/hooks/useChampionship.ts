@@ -140,6 +140,9 @@ export function useChampionship() {
       return { ...prev, lists: newLists, challenges: [...prev.challenges, challenge] };
     });
 
+    // Sync to Supabase (triggers Discord notification for 'racing' status)
+    syncChallengeInsert(challenge);
+
     return null;
   }, [state.lists]);
 
