@@ -113,6 +113,14 @@ export default {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0.7" },
         },
+        "tab-slide-in": {
+          "0%": { opacity: "0", transform: "translateX(12px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        "podium-glow": {
+          "0%, 100%": { boxShadow: "0 0 20px hsl(45 100% 60% / 0.4), 0 0 40px hsl(330 100% 49% / 0.2)" },
+          "50%": { boxShadow: "0 0 35px hsl(45 100% 60% / 0.6), 0 0 60px hsl(330 100% 49% / 0.35), 0 0 100px hsl(330 100% 49% / 0.15)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -126,6 +134,8 @@ export default {
         float: "float 3s ease-in-out infinite",
         shimmer: "shimmer 2s linear infinite",
         "pulse-slow": "pulse-slow 3s ease-in-out infinite",
+        "tab-slide-in": "tab-slide-in 0.35s ease-out",
+        "podium-glow": "podium-glow 2.5s ease-in-out infinite",
       },
     },
   },
