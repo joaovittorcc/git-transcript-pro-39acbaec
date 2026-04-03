@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import PlayerList from '@/components/PlayerList';
+import ParallaxBackground from '@/components/ParallaxBackground';
 import AdminPanel from '@/components/AdminPanel';
 import EloRankingTable from '@/components/EloRankingTable';
 import FriendlyPanel from '@/components/FriendlyPanel';
