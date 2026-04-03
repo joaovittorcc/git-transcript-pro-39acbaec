@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ChampionshipState, Player, Challenge, JokerProgress } from '@/types/championship';
+import { syncChallengeInsert, syncChallengeStatusUpdate, syncChallengeScoreUpdate } from '@/lib/challengeSync';
 
 const STORAGE_KEY = 'championship-state';
 const COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
@@ -139,6 +140,9 @@ export function useChampionship() {
       return { ...prev, lists: newLists, challenges: [...prev.challenges, challenge] };
     });
 
+    // Sync to Supabase (triggers Discord notification for 'racing' status)
+    syncChallengeInsert(challenge);
+
     return null;
   }, [state.lists]);
 
@@ -167,6 +171,9 @@ export function useChampionship() {
       ...prev,
       challenges: [...prev.challenges, challenge],
     }));
+
+    // Sync to Supabase (pending status - no Discord notification)
+    syncChallengeInsert(challenge);
   }, [state.lists]);
 
   const approveInitiationChallenge = useCallback((challengeId: string) => {
@@ -176,6 +183,9 @@ export function useChampionship() {
         c.id === challengeId ? { ...c, status: 'racing' as const } : c
       ),
     }));
+
+    // Sync to Supabase (triggers Discord notification for 'racing')
+    syncChallengeStatusUpdate(challengeId, 'racing');
   }, []);
 
   const rejectInitiationChallenge = useCallback((challengeId: string) => {
@@ -207,6 +217,9 @@ export function useChampionship() {
         const newChallenges = prev.challenges.map(c =>
           c.id === challengeId ? { ...c, status: 'completed' as const } : c
         );
+
+        // Sync initiation resolution to Supabase
+        syncChallengeStatusUpdate(challengeId, 'completed');
 
         return { ...prev, challenges: newChallenges, jokerProgress: newJokerProgress };
       }
@@ -249,6 +262,9 @@ export function useChampionship() {
       const newChallenges = prev.challenges.map(c =>
         c.id === challengeId ? { ...c, status: 'completed' as const } : c
       );
+
+      // Sync to Supabase (triggers Discord notification for 'completed')
+      syncChallengeStatusUpdate(challengeId, 'completed', challenge.score);
 
       return { ...prev, lists: newLists, challenges: newChallenges };
     });
@@ -321,9 +337,13 @@ export function useChampionship() {
           }
         }
 
+        const initScore: [number, number] = side === 'challenger' ? [1, 0] : [0, 1];
         const newChallenges = prev.challenges.map(c =>
-          c.id === challengeId ? { ...c, status: 'completed' as const, score: (side === 'challenger' ? [1, 0] : [0, 1]) as [number, number] } : c
+          c.id === challengeId ? { ...c, status: 'completed' as const, score: initScore } : c
         );
+
+        // Sync initiation completion to Supabase
+        syncChallengeScoreUpdate(challengeId, initScore, 'completed');
 
         return { ...prev, challenges: newChallenges, jokerProgress: newJokerProgress };
       }
@@ -369,6 +389,9 @@ export function useChampionship() {
           return { ...l, players };
         });
 
+        // Sync MD3 completion to Supabase (triggers Discord notification)
+        syncChallengeScoreUpdate(challengeId, newScore, 'completed');
+
         return {
           ...prev,
           lists: newLists,
@@ -377,6 +400,9 @@ export function useChampionship() {
           ),
         };
       }
+
+      // Sync score update (no status change yet)
+      syncChallengeScoreUpdate(challengeId, newScore);
 
       return { ...prev, challenges: newChallenges };
     });
