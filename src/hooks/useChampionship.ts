@@ -334,9 +334,13 @@ export function useChampionship() {
           }
         }
 
+        const initScore: [number, number] = side === 'challenger' ? [1, 0] : [0, 1];
         const newChallenges = prev.challenges.map(c =>
-          c.id === challengeId ? { ...c, status: 'completed' as const, score: (side === 'challenger' ? [1, 0] : [0, 1]) as [number, number] } : c
+          c.id === challengeId ? { ...c, status: 'completed' as const, score: initScore } : c
         );
+
+        // Sync initiation completion to Supabase
+        syncChallengeScoreUpdate(challengeId, initScore, 'completed');
 
         return { ...prev, challenges: newChallenges, jokerProgress: newJokerProgress };
       }
