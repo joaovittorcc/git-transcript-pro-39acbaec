@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ChampionshipState, Player, Challenge, JokerProgress } from '@/types/championship';
+import { syncChallengeInsert, syncChallengeStatusUpdate, syncChallengeScoreUpdate } from '@/lib/challengeSync';
 
 const STORAGE_KEY = 'championship-state';
 const COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000;
