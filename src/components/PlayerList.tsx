@@ -385,6 +385,9 @@ const PlayerList = ({
         </SortableContext>
       </DndContext>
 
+      {/* Telemetry data stream */}
+      <div className="telemetry-data" />
+
       {challengerIdx !== null && selectedOpponentIdx !== null && (
         <RaceConfigModal
           open={raceModalOpen}

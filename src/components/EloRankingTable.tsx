@@ -140,6 +140,9 @@ const EloRankingTable = ({ rankings, matches }: EloRankingTableProps) => {
           </table>
         </div>
 
+        {/* Telemetry data stream */}
+        <div className="telemetry-data" />
+
         {rankings.length === 0 && (
           <p className="text-sm text-muted-foreground text-center py-8">
             Nenhum amistoso registrado ainda.
