@@ -16,9 +16,9 @@ const ParallaxBackground = () => {
     const animate = (now: number) => {
       const dt = (now - lastTime) / 1000;
       lastTime = now;
-      animOffset.current += dt * 12; // 12px per second lateral drift
+      animOffset.current += dt * 5;
       if (layerRef.current) {
-        layerRef.current.style.transform = `rotate(-15deg) translate(${-animOffset.current % 400}px, ${scrollOffset.current * 0.3}px)`;
+        layerRef.current.style.transform = `rotate(15deg) translate(${animOffset.current % 500}px, ${scrollOffset.current * 0.3}px)`;
       }
       rafRef.current = requestAnimationFrame(animate);
     };
@@ -30,10 +30,10 @@ const ParallaxBackground = () => {
     };
   }, []);
 
-  const text = 'MIDNIGHT CLUB 夜中    ';
-  const line = text.repeat(14);
-  const lines = Array.from({ length: 50 }, (_, i) => (
-    <div key={i} className="whitespace-nowrap select-none" style={{ lineHeight: '3.6em', letterSpacing: '0.5em' }}>
+  const text = 'MIDNIGHT CLUB 夜中       ';
+  const line = text.repeat(8);
+  const lines = Array.from({ length: 30 }, (_, i) => (
+    <div key={i} className="whitespace-nowrap select-none" style={{ lineHeight: '5em', letterSpacing: '0.6em' }}>
       {line}
     </div>
   ));
@@ -42,14 +42,14 @@ const ParallaxBackground = () => {
     <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
       <div
         ref={layerRef}
-        className="absolute font-orbitron font-bold text-[11px] uppercase"
+        className="absolute font-orbitron font-bold text-[10px] uppercase"
         style={{
-          color: '#151515',
-          textShadow: '0 0 8px hsl(330 100% 49% / 0.06)',
-          transform: 'rotate(-15deg)',
+          color: '#111111',
+          textShadow: '0 0 10px hsl(330 100% 49% / 0.04)',
+          transform: 'rotate(15deg)',
           top: '-50%',
-          left: '-30%',
-          width: '200%',
+          left: '-40%',
+          width: '220%',
           height: '250%',
         }}
       >
