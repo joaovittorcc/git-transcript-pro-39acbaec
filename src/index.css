@@ -6,35 +6,35 @@
 
 @layer base {
   :root {
-    --radius: 0.5rem;
-    --background: 270 30% 6%;
-    --foreground: 280 20% 90%;
-    --card: 270 25% 8%;
-    --card-foreground: 280 20% 90%;
-    --popover: 270 25% 8%;
-    --popover-foreground: 280 20% 90%;
-    --primary: 280 100% 65%;
-    --primary-foreground: 270 30% 6%;
-    --secondary: 270 15% 12%;
-    --secondary-foreground: 280 20% 90%;
-    --muted: 270 12% 14%;
-    --muted-foreground: 280 15% 45%;
-    --accent: 330 100% 60%;
-    --accent-foreground: 270 30% 6%;
+    --radius: 0.15rem;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 330 100% 49%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 7%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 330 100% 49%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 80% 55%;
     --destructive-foreground: 0 0% 98%;
-    --border: 280 20% 18%;
-    --input: 280 20% 18%;
-    --ring: 280 100% 65%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
+    --ring: 330 100% 49%;
 
-    --sidebar-background: 270 25% 7%;
-    --sidebar-foreground: 280 20% 90%;
-    --sidebar-primary: 280 100% 65%;
-    --sidebar-primary-foreground: 270 30% 6%;
-    --sidebar-accent: 270 15% 12%;
-    --sidebar-accent-foreground: 280 20% 90%;
-    --sidebar-border: 280 20% 18%;
-    --sidebar-ring: 280 100% 65%;
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 330 100% 49%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 7%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 14%;
+    --sidebar-ring: 330 100% 49%;
   }
 
   * {
@@ -52,6 +52,25 @@
 }
 
 @layer utilities {
+  /* Scanlines overlay */
+  .scanlines::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.015) 2px,
+      rgba(255, 255, 255, 0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
   .kanji-watermark {
     position: relative;
   }
@@ -61,7 +80,7 @@
     font-family: 'Noto Sans JP', sans-serif;
     font-weight: 900;
     font-size: 12rem;
-    color: hsl(280 100% 65% / 0.03);
+    color: hsl(330 100% 49% / 0.03);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -73,7 +92,7 @@
 
   .kanji-watermark-sm::before {
     font-size: 6rem;
-    color: hsl(280 100% 65% / 0.04);
+    color: hsl(330 100% 49% / 0.04);
   }
 
   .kanji-accent {
@@ -81,14 +100,15 @@
     font-weight: 700;
   }
 
-  .neon-text-purple {
-    color: hsl(280 100% 65%);
-    text-shadow: 0 0 7px hsl(280 100% 65% / 0.8), 0 0 20px hsl(280 100% 65% / 0.4), 0 0 40px hsl(280 100% 65% / 0.2);
+  .neon-text-pink {
+    color: hsl(330 100% 49%);
+    text-shadow: 0 0 7px hsl(330 100% 49% / 0.8), 0 0 20px hsl(330 100% 49% / 0.4), 0 0 40px hsl(330 100% 49% / 0.2);
   }
 
-  .neon-text-pink {
-    color: hsl(330 100% 60%);
-    text-shadow: 0 0 7px hsl(330 100% 60% / 0.8), 0 0 20px hsl(330 100% 60% / 0.4), 0 0 40px hsl(330 100% 60% / 0.2);
+  /* Keep purple alias pointing to pink now */
+  .neon-text-purple {
+    color: hsl(330 100% 49%);
+    text-shadow: 0 0 7px hsl(330 100% 49% / 0.8), 0 0 20px hsl(330 100% 49% / 0.4), 0 0 40px hsl(330 100% 49% / 0.2);
   }
 
   .neon-text-blue {
@@ -102,13 +122,13 @@
   }
 
   .neon-border {
-    border-color: hsl(280 100% 65% / 0.5);
-    box-shadow: 0 0 10px hsl(280 100% 65% / 0.2), inset 0 0 10px hsl(280 100% 65% / 0.05);
+    border-color: hsl(330 100% 49% / 0.3);
+    box-shadow: 0 0 8px hsl(330 100% 49% / 0.15), inset 0 0 8px hsl(330 100% 49% / 0.03);
   }
 
   .neon-border-pink {
-    border-color: hsl(330 100% 60% / 0.5);
-    box-shadow: 0 0 10px hsl(330 100% 60% / 0.2), inset 0 0 10px hsl(330 100% 60% / 0.05);
+    border-color: hsl(330 100% 49% / 0.4);
+    box-shadow: 0 0 10px hsl(330 100% 49% / 0.2), inset 0 0 10px hsl(330 100% 49% / 0.05);
   }
 
   .neon-border-gold {
@@ -117,22 +137,22 @@
   }
 
   .neon-glow {
-    box-shadow: 0 0 15px hsl(280 100% 65% / 0.3), 0 0 30px hsl(280 100% 65% / 0.15);
+    box-shadow: 0 0 12px hsl(330 100% 49% / 0.25), 0 0 25px hsl(330 100% 49% / 0.1);
   }
 
   .neon-glow-intense {
-    box-shadow: 0 0 20px hsl(280 100% 65% / 0.4), 0 0 40px hsl(280 100% 65% / 0.2), 0 0 80px hsl(280 100% 65% / 0.1);
+    box-shadow: 0 0 20px hsl(330 100% 49% / 0.4), 0 0 40px hsl(330 100% 49% / 0.2), 0 0 80px hsl(330 100% 49% / 0.1);
   }
 
   .card-racing {
-    background: linear-gradient(145deg, hsl(270 20% 9%), hsl(270 25% 7%));
-    border: 1px solid hsl(280 100% 65% / 0.2);
+    background: linear-gradient(145deg, hsl(0 0% 5%), hsl(0 0% 3%));
+    border: 1px solid hsl(330 100% 49% / 0.15);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   .card-racing:hover {
-    border-color: hsl(280 100% 65% / 0.4);
-    box-shadow: 0 0 20px hsl(280 100% 65% / 0.15), 0 0 40px hsl(280 100% 65% / 0.05);
+    border-color: hsl(330 100% 49% / 0.35);
+    box-shadow: 0 0 15px hsl(330 100% 49% / 0.1), 0 0 30px hsl(330 100% 49% / 0.05);
   }
 
   .first-place-row {
@@ -165,19 +185,16 @@
     transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .hover-lift:hover {
-    box-shadow: 0 8px 25px hsl(280 100% 65% / 0.15);
+    box-shadow: 0 8px 25px hsl(330 100% 49% / 0.15);
   }
 
   .neon-line {
     height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(280 100% 65% / 0.6), hsl(330 100% 60% / 0.6), transparent);
+    background: linear-gradient(90deg, transparent, hsl(330 100% 49% / 0.6), hsl(330 100% 49% / 0.3), transparent);
   }
 
   .bg-grid-pattern {
-    background-image:
-      linear-gradient(hsl(280 100% 65% / 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(280 100% 65% / 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-image: none;
   }
 
   .stagger-1 { animation-delay: 0.1s; }
@@ -200,5 +217,27 @@
 
   .font-orbitron {
     font-family: 'Orbitron', sans-serif;
+  }
+
+  /* Section title with kanji overlay */
+  .section-title-jdm {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-style: italic;
+  }
+  .section-title-jdm .kanji-overlay {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 900;
+    font-style: normal;
+    opacity: 0.12;
+    font-size: 1.8em;
+    color: hsl(330 100% 49%);
+    position: absolute;
+    right: -1.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
   }
 }

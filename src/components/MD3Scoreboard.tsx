@@ -33,7 +33,7 @@ const MD3Scoreboard = ({ challenge, isAdmin, onAddPoint }: MD3ScoreboardProps) =
   const challengedLeading = challengedScore > challengerScore;
 
   return (
-    <div className="rounded-xl border border-accent/20 bg-secondary/40 relative overflow-hidden">
+    <div className=" border border-accent/20 bg-secondary/40 relative overflow-hidden">
       {/* Winner overlay */}
       {showConfetti && (
         <div className="absolute inset-0 flex items-center justify-center z-10 bg-background/85 backdrop-blur-sm animate-fade-in">

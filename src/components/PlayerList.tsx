@@ -330,7 +330,7 @@ const PlayerList = ({
   const showChallengeButtons = isLoggedIn && !isInitiation && !isExternal && !isJoker;
 
   return (
-    <div className={`card-racing rounded-xl overflow-hidden hover-lift ${highlight ? 'neon-glow neon-border border-2' : 'neon-border'}`}>
+    <div className={`card-racing overflow-hidden hover-lift ${highlight ? 'neon-glow neon-border border-2' : 'neon-border'}`}>
       <div className="bg-secondary/80 px-5 py-4 border-b border-border flex items-center gap-2">
         <div className={`h-2 w-2 rounded-full ${highlight ? 'bg-accent' : 'bg-primary'} animate-pulse`} />
         <h2 className={`text-xs font-bold tracking-[0.2em] uppercase font-['Orbitron'] ${highlight ? 'neon-text-pink' : 'neon-text-purple'}`}>

@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import PlayerList from '@/components/PlayerList';
+import ParallaxBackground from '@/components/ParallaxBackground';
 import AdminPanel from '@/components/AdminPanel';
 import EloRankingTable from '@/components/EloRankingTable';
 import FriendlyPanel from '@/components/FriendlyPanel';
@@ -240,9 +241,10 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground bg-grid-pattern">
+    <div className="min-h-screen bg-background text-foreground scanlines relative">
+      <ParallaxBackground />
       {/* Sticky Header */}
-      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 relative">
         <div className="neon-line" />
         <div className="max-w-6xl mx-auto px-4">
           {/* Top row: logo + login */}
@@ -321,7 +323,7 @@ const Index = () => {
       </header>
 
       {/* Tab content */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
+      <main className="max-w-6xl mx-auto px-4 py-8 relative z-10">
         {/* INÍCIO */}
         {activeTab === 'inicio' && (
           <div className="space-y-6">
@@ -369,7 +371,7 @@ const Index = () => {
                 ════ Regras & Progressão ════
               </h3>
 
-              <div className="card-racing rounded-xl neon-border p-5 space-y-3 animate-fade-in-up animate-fill-both stagger-1">
+              <div className="card-racing neon-border p-5 space-y-3 animate-fade-in-up animate-fill-both stagger-1">
                 <h4 className="text-sm font-bold uppercase tracking-[0.15em] neon-text-pink font-['Orbitron']">
                   🃏 Lista de Iniciação — JOKER
                 </h4>
@@ -386,7 +388,7 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="card-racing rounded-xl neon-border p-5 space-y-3 animate-fade-in-up animate-fill-both stagger-2">
+              <div className="card-racing neon-border p-5 space-y-3 animate-fade-in-up animate-fill-both stagger-2">
                 <h4 className="text-sm font-bold uppercase tracking-[0.15em] neon-text-pink font-['Orbitron']">
                   🏍️ Street Runners — Pós-Iniciação
                 </h4>
@@ -403,7 +405,7 @@ const Index = () => {
                 </div>
               </div>
 
-              <div className="card-racing rounded-xl neon-border p-5 space-y-3 animate-fade-in-up animate-fill-both stagger-3">
+              <div className="card-racing neon-border p-5 space-y-3 animate-fade-in-up animate-fill-both stagger-3">
                 <h4 className="text-sm font-bold uppercase tracking-[0.15em] neon-text-pink font-['Orbitron']">
                   🌙 Night Drivers — Lista 02
                 </h4>
@@ -417,7 +419,7 @@ const Index = () => {
                 </ul>
               </div>
 
-              <div className="card-racing rounded-xl neon-border p-5 space-y-3 border-yellow-500/30 animate-fade-in-up animate-fill-both stagger-4">
+              <div className="card-racing neon-border p-5 space-y-3 border-yellow-500/30 animate-fade-in-up animate-fill-both stagger-4">
                 <h4 className="text-sm font-bold uppercase tracking-[0.15em] text-yellow-400 font-['Orbitron']">
                   ⚠️ Regra Especial — 7º Colocado (Lista 02)
                 </h4>
@@ -432,7 +434,7 @@ const Index = () => {
               </div>
 
               {/* ELO Rules Card */}
-              <div className="card-racing rounded-xl neon-border p-5 space-y-3 border-orange-500/30 animate-fade-in-up animate-fill-both stagger-5">
+              <div className="card-racing neon-border p-5 space-y-3 border-orange-500/30 animate-fade-in-up animate-fill-both stagger-5">
                 <h4 className="text-sm font-bold uppercase tracking-[0.15em] text-orange-400 font-['Orbitron']">
                   🔥 Sistema de Amistosos — ELO
                 </h4>
@@ -474,7 +476,7 @@ const Index = () => {
             {/* Collapsed initiation list for non-joker pilots who completed it */}
             {initiationList && !isJoker && !isAdmin && isRegistered && (
               <div className="max-w-md mx-auto mb-6 animate-fade-in-up animate-fill-both stagger-1">
-                <details className="card-racing rounded-xl neon-border overflow-hidden">
+                <details className="card-racing neon-border overflow-hidden">
                   <summary className="bg-secondary/80 px-5 py-3 border-b border-border flex items-center gap-2 cursor-pointer hover:bg-secondary transition-colors list-none">
                     <div className="h-2 w-2 rounded-full bg-muted-foreground/50" />
                     <span className="text-xs font-bold tracking-[0.2em] uppercase font-['Orbitron'] text-muted-foreground">
