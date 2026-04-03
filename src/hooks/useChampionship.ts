@@ -218,6 +218,9 @@ export function useChampionship() {
           c.id === challengeId ? { ...c, status: 'completed' as const } : c
         );
 
+        // Sync initiation resolution to Supabase
+        syncChallengeStatusUpdate(challengeId, 'completed');
+
         return { ...prev, challenges: newChallenges, jokerProgress: newJokerProgress };
       }
 
