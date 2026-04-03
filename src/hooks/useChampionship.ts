@@ -260,6 +260,9 @@ export function useChampionship() {
         c.id === challengeId ? { ...c, status: 'completed' as const } : c
       );
 
+      // Sync to Supabase (triggers Discord notification for 'completed')
+      syncChallengeStatusUpdate(challengeId, 'completed', challenge.score);
+
       return { ...prev, lists: newLists, challenges: newChallenges };
     });
   }, []);
