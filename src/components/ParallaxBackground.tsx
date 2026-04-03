@@ -2,46 +2,60 @@ import { useEffect, useRef } from 'react';
 
 const ParallaxBackground = () => {
   const layerRef = useRef<HTMLDivElement>(null);
+  const scrollOffset = useRef(0);
+  const animOffset = useRef(0);
+  const rafRef = useRef<number>(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (layerRef.current) {
-        const scrollY = window.scrollY;
-        layerRef.current.style.transform = `rotate(-15deg) translateY(${scrollY * 0.3}px)`;
-      }
+      scrollOffset.current = window.scrollY;
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    let lastTime = performance.now();
+    const animate = (now: number) => {
+      const dt = (now - lastTime) / 1000;
+      lastTime = now;
+      animOffset.current += dt * 12; // 12px per second lateral drift
+      if (layerRef.current) {
+        layerRef.current.style.transform = `rotate(-15deg) translate(${-animOffset.current % 400}px, ${scrollOffset.current * 0.3}px)`;
+      }
+      rafRef.current = requestAnimationFrame(animate);
+    };
+    rafRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      cancelAnimationFrame(rafRef.current);
+    };
   }, []);
 
-  // Generate repeated text
-  const text = 'MIDNIGHT CLUB 夜中  ';
-  const line = text.repeat(12);
-  const lines = Array.from({ length: 60 }, (_, i) => (
-    <div key={i} className="whitespace-nowrap select-none" style={{ lineHeight: '2.2em' }}>
+  const text = 'MIDNIGHT CLUB 夜中    ';
+  const line = text.repeat(14);
+  const lines = Array.from({ length: 50 }, (_, i) => (
+    <div key={i} className="whitespace-nowrap select-none" style={{ lineHeight: '3.6em', letterSpacing: '0.5em' }}>
       {line}
     </div>
   ));
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
-      {/* Repeating text layer */}
       <div
         ref={layerRef}
-        className="absolute font-orbitron font-bold text-[11px] tracking-[0.15em] uppercase"
+        className="absolute font-orbitron font-bold text-[11px] uppercase"
         style={{
-          color: '#121212',
+          color: '#151515',
+          textShadow: '0 0 8px hsl(330 100% 49% / 0.06)',
           transform: 'rotate(-15deg)',
-          top: '-40%',
-          left: '-20%',
-          width: '160%',
-          height: '200%',
+          top: '-50%',
+          left: '-30%',
+          width: '200%',
+          height: '250%',
         }}
       >
         {lines}
       </div>
 
-      {/* Radial gradient center light */}
       <div
         className="absolute inset-0"
         style={{
